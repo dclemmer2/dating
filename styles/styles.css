@@ -1,0 +1,23 @@
+button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #95737e;
+    padding: 7px;
+    border: none;
+}
+
+.content {
+    margin: 20px;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+nav {
+    background-color: #95737e;
+}
