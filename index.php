@@ -29,18 +29,6 @@ $f3->route('GET /personal', function () {
 
 //Define a profile route
 $f3->route('POST /profile', function () {
-    $view = new Template();
-    echo $view->render('views/profile.html');
-});
-
-//Define an interests route
-$f3->route('POST /interests', function () {
-    $view = new Template();
-    echo $view->render('views/interests.html');
-});
-
-//Define a summary route
-$f3->route('POST /summary', function () {
     //Add data from forms to Session array
     if(isset($_POST['fname'])) {
         $_SESSION['fname'] = $_POST['fname'];
@@ -48,26 +36,48 @@ $f3->route('POST /summary', function () {
     if(isset($_POST['lname'])) {
         $_SESSION['lname'] = $_POST['lname'];
     }
+    if(isset($_POST['gender'])) {
+        $_SESSION['gender'] = $_POST['gender'];
+    }
     if(isset($_POST['age'])) {
         $_SESSION['age'] = $_POST['age'];
     }
     if(isset($_POST['phone'])) {
         $_SESSION['phone'] = $_POST['phone'];
     }
+
+    $view = new Template();
+    echo $view->render('views/profile.html');
+});
+
+//Define an interests route
+$f3->route('POST /interests', function () {
+    //Add data from forms to Session array
     if(isset($_POST['email'])) {
         $_SESSION['email'] = $_POST['email'];
     }
     if(isset($_POST['state'])) {
         $_SESSION['state'] = $_POST['state'];
     }
+    if(isset($_POST['seeking'])) {
+        $_SESSION['seeking'] = $_POST['seeking'];
+    }
+    if(isset($_POST['bio'])) {
+        $_SESSION['bio'] = $_POST['bio'];
+    }
+
+    $view = new Template();
+    echo $view->render('views/interests.html');
+});
+
+//Define a summary route
+$f3->route('POST /summary', function () {
+    //Add data from forms to Session array
     if(isset($_POST['indoor'])) {
         $_SESSION['indoor'] = implode(", ", $_POST['indoor']);
     }
     if(isset($_POST['outdoor'])) {
         $_SESSION['outdoor'] = implode(", ", $_POST['outdoor']);
-    }
-    if(isset($_POST['biography'])) {
-        $_SESSION['biography'] = $_POST['biography'];
     }
 
     //Display a view
