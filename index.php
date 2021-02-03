@@ -24,5 +24,11 @@ $f3->route('GET /personal', function () {
     echo $view->render('views/personal-info.html');
 });
 
+//Define a profile route
+$f3->route('POST /profile', function () {
+    $view = new Template();
+    echo $view->render('views/profile.html');
+});
+
 //Run fat free
 $f3->run();
