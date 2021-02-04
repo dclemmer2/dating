@@ -29,7 +29,7 @@ $f3->route('GET /personal', function () {
 
 //Define a profile route
 $f3->route('POST /profile', function () {
-    //Add data from forms to Session array
+    //Add data from personal info to Session array
     if(isset($_POST['fname'])) {
         $_SESSION['fname'] = $_POST['fname'];
     }
@@ -52,7 +52,7 @@ $f3->route('POST /profile', function () {
 
 //Define an interests route
 $f3->route('POST /interests', function () {
-    //Add data from forms to Session array
+    //Add data from profile to Session array
     if(isset($_POST['email'])) {
         $_SESSION['email'] = $_POST['email'];
     }
@@ -72,12 +72,18 @@ $f3->route('POST /interests', function () {
 
 //Define a summary route
 $f3->route('POST /summary', function () {
-    //Add data from forms to Session array
+    //Add data from interests to Session array
     if(isset($_POST['indoor'])) {
-        $_SESSION['indoor'] = implode(", ", $_POST['indoor']);
+        $_SESSION['indoor'] = implode(", ", $_POST['indoor']) . ",";
+    }
+    else {
+        $_SESSION['indoor'] = "";
     }
     if(isset($_POST['outdoor'])) {
         $_SESSION['outdoor'] = implode(", ", $_POST['outdoor']);
+    }
+    else {
+        $_SESSION['outdoor'] = "";
     }
 
     //Display a view
