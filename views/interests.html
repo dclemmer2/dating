@@ -1,46 +1,56 @@
+<!--
+Dana Clemmer
+2/8/21
+interests.html Page containing a form with interests for a dating website
+-->
 <include href="views/header.html"></include>
 
-<h1>Interests</h1>
-<form method="post" action="summary">
-    <label>Indoor Interests</label><br>
-    <div class="form-row">
-        <div class="form-group col">
-            <label><input type="checkbox" name="indoor[]" value="tv"> tv</label><br>
-            <label><input type="checkbox" name="indoor[]" value="puzzles"> puzzles</label>
+<div class="content border p-4 rounded">
+    <h1>Interests</h1>
+    <hr>
+    <form method="post" action="summary">
+        <label class="font-weight-bold">Indoor Interests</label><br>
+        <div class="form-row">
+            <div class="form-group col">
+                <label><input type="checkbox" name="indoor[]" value="tv"> tv</label><br>
+                <label><input type="checkbox" name="indoor[]" value="puzzles"> puzzles</label>
+            </div>
+            <div class="form-group col">
+                <label><input type="checkbox" name="indoor[]" value="movies"> movies</label><br>
+                <label><input type="checkbox" name="indoor[]" value="reading"> reading</label>
+            </div>
+            <div class="form-group col">
+                <label><input type="checkbox" name="indoor[]" value="cooking"> cooking</label><br>
+                <label><input type="checkbox" name="indoor[]" value="playing cards"> playing cards</label>
+            </div>
+            <div class="form-group col">
+                <label><input type="checkbox" name="indoor[]" value="board games"> board games</label><br>
+                <label><input type="checkbox" name="indoor[]" value="video games"> video games</label>
+            </div>
         </div>
-        <div class="form-group col">
-            <label><input type="checkbox" name="indoor[]" value="movies"> movies</label><br>
-            <label><input type="checkbox" name="indoor[]" value="reading"> reading</label>
+        <br>
+        <label class="font-weight-bold">Outdoor Interests</label><br>
+        <div class="form-row">
+            <div class="form-group col">
+                <label><input type="checkbox" name="outdoor[]" value="hiking"> hiking</label><br>
+                <label><input type="checkbox" name="outdoor[]" value="walking"> walking</label>
+            </div>
+            <div class="form-group col">
+                <label><input type="checkbox" name="outdoor[]" value="biking"> biking</label><br>
+                <label><input type="checkbox" name="outdoor[]" value="climbing"> climbing</label>
+            </div>
+            <div class="form-group col">
+                <label><input type="checkbox" name="outdoor[]" value="swimming"> swimming</label>
+            </div>
+            <div class="form-group col">
+                <label><input type="checkbox" name="outdoor[]" value="collecting"> collecting</label>
+            </div>
         </div>
-        <div class="form-group col">
-            <label><input type="checkbox" name="indoor[]" value="cooking"> cooking</label><br>
-            <label><input type="checkbox" name="indoor[]" value="playing cards"> playing cards</label>
+        <br>
+        <div class="text-right">
+            <input class="rounded text-white font-weight-bold" type="submit" value="Next >">
         </div>
-        <div class="form-group col">
-            <label><input type="checkbox" name="indoor[]" value="board games"> board games</label><br>
-            <label><input type="checkbox" name="indoor[]" value="video games"> video games</label>
-        </div>
-    </div>
-    <br>
-    <label>Outdoor Interests</label><br>
-    <div class="form-row">
-        <div class="form-group col">
-            <label><input type="checkbox" name="outdoor[]" value="hiking"> hiking</label><br>
-            <label><input type="checkbox" name="outdoor[]" value="walking"> walking</label>
-        </div>
-        <div class="form-group col">
-            <label><input type="checkbox" name="outdoor[]" value="biking"> biking</label><br>
-            <label><input type="checkbox" name="outdoor[]" value="climbing"> climbing</label>
-        </div>
-        <div class="form-group col">
-            <label><input type="checkbox" name="outdoor[]" value="swimming"> swimming</label>
-        </div>
-        <div class="form-group col">
-            <label><input type="checkbox" name="outdoor[]" value="collecting"> collecting</label>
-        </div>
-    </div>
-    <br>
-    <input type="submit" value="Next>">
-</form>
+    </form>
+</div>
 </body>
 </html>

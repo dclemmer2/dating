@@ -1,25 +1,43 @@
+<!--
+Dana Clemmer
+2/8/21
+personal-info.html Page containing a form with personal info for a dating website
+-->
 <include href="views/header.html"></include>
 
-<div class="container">
+<div class="content border p-4 rounded">
     <h1>Personal Info</h1>
+    <hr>
     <form method="post" action="profile">
-        <label for="fname" class="font-weight-bold">First Name</label><br>
-        <input type="text" class="form-control" id="fname" name="fname" placeholder="Sarah"><br>
-        <label for="lname" class="font-weight-bold">Last Name</label><br>
-        <input type="text" class="form-control" id="lname" name="lname" placeholder="Smith"><br>
-        <label for="age" class="font-weight-bold">Age</label><br>
-        <input type="number" class="form-control" id="age" name="age" placeholder="25"><br>
-        <label class="font-weight-bold">Gender</label><br>
-        <label><input type="radio" name="gender" id="male" value="male"> Male
-            </input></label>
-        <label><input type="radio" name="gender" id="female" value="female"> Female
-            </input></label><br>
-        <label for="phone" class="font-weight-bold">Phone Number</label>
-        <input type="tel" class="form-control" id="phone" name="phone" maxlength="10"
-               pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"
-               placeholder="123-456-7890"><br><br>
+        <div class="form-row">
+            <div class="form-group col-sm-8">
+                <label for="fname" class="font-weight-bold">First Name</label><br>
+                <input type="text" class="form-control" id="fname" name="fname" placeholder="Sarah"><br>
+                <label for="lname" class="font-weight-bold">Last Name</label><br>
+                <input type="text" class="form-control" id="lname" name="lname" placeholder="Smith"><br>
+                <label for="age" class="font-weight-bold">Age</label><br>
+                <input type="number" class="form-control" id="age" name="age" placeholder="25"><br>
+                <label class="font-weight-bold">Gender</label><br>
+                <label><input type="radio" name="gender" id="male" value="male"> Male
+                    </input></label>
+                <label><input type="radio" name="gender" id="female" value="female"> Female
+                    </input></label><br>
+                <label for="phone" class="font-weight-bold">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" name="phone" maxlength="10"
+                       pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"
+                       placeholder="123-456-7890"><br><br>
+            </div>
+            <div class="form-group col-sm-4">
+                <p id="privacyPol" class="rounded text-center"><strong>Note:</strong> All information
+                    entered is protected by our privacy policy. Profile information can
+                    only be viewed by others with your permission. </p>
+            </div>
+        </div>
 
-        <input type="submit" value="Next>">
+        <div class="text-right">
+            <input class="rounded text-white font-weight-bold" type="submit" value="Next >">
+        </div>
+
     </form>
 </div>
 </body>

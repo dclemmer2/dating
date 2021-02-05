@@ -1,22 +1,39 @@
+<!--
+Dana Clemmer
+2/8/21
+summary.html Page containing summary of form submission for a dating website
+-->
 <include href="views/header.html"></include>
 <body>
-<div class="container">
-    <h1>Profile Summary</h1>
+<div class="content border p-4 rounded">
+    <div class="form-row">
+        <div class="form-group col-md-6" id="left">
+            <hr>
+            <p>Name: {{ @SESSION.fname }} {{ @SESSION.lname }}</p>
+            <hr>
+            <p>Gender: {{ @SESSION.gender }}</p>
+            <hr>
+            <p>Age: {{ @SESSION.age }}</p>
+            <hr>
+            <p>Phone: {{ @SESSION.phone }}</p>
+            <hr>
+            <p>Email: {{ @SESSION.email }}</p>
+            <hr>
+            <p>State: {{ @SESSION.state }}</p>
+            <hr>
+            <p>Seeking: {{ @SESSION.seeking }}</p>
+            <hr>
+            <p>Interests: {{ @SESSION.indoor }} {{ @SESSION.outdoor }}</p>
+            <hr>
+        </div>
+        <div class="container-fluid form-group col-md-5">
+            <img id="profile" class="rounded" src="images/profile.png" alt="Profile">
+            <h5>Biography</h5>
+            <p>{{ @SESSION.bio }}</p>
+        </div>
+    </div>
 
-    <p>Name: {{ @SESSION.fname }} {{ @SESSION.lname }}</p>
-    <p>Gender: {{ @SESSION.gender }}</p>
-    <p>Age: {{ @SESSION.age }}</p>
-    <p>Phone: {{ @SESSION.phone }}</p>
-    <p>Email: {{ @SESSION.email }}</p>
-    <p>State: {{ @SESSION.state }}</p>
-    <p>Seeking: {{ @SESSION.seeking }}</p>
-    <p>Interests: {{ @SESSION.indoor }} {{ @SESSION.outdoor }}</p>
-
-    <p>Biography: {{ @SESSION.bio }}</p>
-
-    <a href="{{ @BASE }}">Home page</a>
-
-    <input type="submit" value="Contact Me!">
+    <input class="submit rounded text-white font-weight-bold" type="submit" value="Contact Me!">
 </div>
 </body>
 </html>
