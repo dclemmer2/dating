@@ -19,11 +19,22 @@ input.rounded {
     border: none;
 }
 
-#privacyPol {
-    background-color: #95737eb3;
-    padding: 12px;
-    width: 90%;
-    float: right;
+@media(min-width: 576px) {
+    #privacyPol {
+        background-color: #95737eb3;
+        padding: 12px;
+        width: 95%;
+        float: right;
+        margin-top: 30px;
+    }
+}
+
+@media(max-width: 575px) {
+    #privacyPol {
+        background-color: #95737eb3;
+        padding: 12px;
+        margin-top: 30px;
+    }
 }
 
 .bioDiv {
@@ -51,5 +62,25 @@ body {
 }
 
 img#profile {
-    width: 80%;
+    width: 16em;
+}
+
+@media(max-width: 500px) {
+    img#profile {
+        width: 10em;
+    }
+}
+
+.radioFormat {
+    margin: 0 10px 15px 0;
+}
+
+table {
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
 }
