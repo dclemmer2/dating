@@ -1,3 +1,8 @@
+/* Dana Clemmer
+ * 2/8/21
+ * styles.css Css stylesheet for a dating website
+ */
+
 input.submit {
     display: block;
     margin-left: auto;
@@ -5,6 +10,25 @@ input.submit {
     background-color: #95737e;
     padding: 7px;
     border: none;
+    font-size: 20px;
+}
+
+input.rounded {
+    background-color: #95737e;
+    padding: 7px;
+    border: none;
+}
+
+#privacyPol {
+    background-color: #95737eb3;
+    padding: 12px;
+    width: 90%;
+    float: right;
+}
+
+.bioDiv {
+    width: 97%;
+    float: right;
 }
 
 .content {
@@ -24,4 +48,8 @@ nav {
 
 body {
     padding-top: 3.5em;
+}
+
+img#profile {
+    width: 80%;
 }
