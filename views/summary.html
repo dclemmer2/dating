@@ -8,26 +8,36 @@ summary.html Page containing summary of form submission for a dating website
 <div class="content border p-4 rounded">
     <div class="form-row">
         <div class="form-group col-md-6" id="left">
-            <hr>
-            <p>Name: {{ @SESSION.fname }} {{ @SESSION.lname }}</p>
-            <hr>
-            <p>Gender: {{ @SESSION.gender }}</p>
-            <hr>
-            <p>Age: {{ @SESSION.age }}</p>
-            <hr>
-            <p>Phone: {{ @SESSION.phone }}</p>
-            <hr>
-            <p>Email: {{ @SESSION.email }}</p>
-            <hr>
-            <p>State: {{ @SESSION.state }}</p>
-            <hr>
-            <p>Seeking: {{ @SESSION.seeking }}</p>
-            <hr>
-            <p>Interests: {{ @SESSION.indoor }} {{ @SESSION.outdoor }}</p>
-            <hr>
+            <table>
+                <tr>
+                    <td>Name: {{ @SESSION.fname }} {{ @SESSION.lname }}</td>
+                </tr>
+                <tr>
+                    <td>Gender: {{ @SESSION.gender }}</td>
+                </tr>
+                <tr>
+                    <td>Age: {{ @SESSION.age }}</td>
+                </tr>
+                <tr>
+                    <td>Phone: {{ @SESSION.phone }}</td>
+                </tr>
+                <tr>
+                    <td>Email: {{ @SESSION.email }}</td>
+                </tr>
+                <tr>
+                    <td>State: {{ @SESSION.state }}</td>
+                </tr>
+                <tr>
+                    <td>Seeking: {{ @SESSION.seeking }}</td>
+                </tr>
+                <tr>
+                    <td>Interests: {{ @SESSION.indoor }} {{ @SESSION.outdoor }}</td>
+                </tr>
+            </table>
         </div>
         <div class="container-fluid form-group col-md-5">
             <img id="profile" class="rounded" src="images/profile.png" alt="Profile">
+            <br>
             <h5>Biography</h5>
             <p>{{ @SESSION.bio }}</p>
         </div>
