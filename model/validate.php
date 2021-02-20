@@ -13,14 +13,24 @@ class Validate
         $this->_dataLayer = new DataLayer();
     }
 
-    /** validName() returns true if name is not empty and
+    /** validFirstName() returns true if first name is not empty and
      * contains only letters
-     * @param String $name
+     * @param String $fname
      * @return boolean
      */
-    function validName($name)
+    function validFirstName($fname)
     {
-        return !empty(trim($name)) && ctype_alpha($name);
+        return !empty(trim($fname)) && ctype_alpha($fname);
+    }
+
+    /** validLastName() returns true if last name is not empty and
+     * contains only letters
+     * @param String $lname
+     * @return boolean
+     */
+    function validLastName($lname)
+    {
+        return !empty(trim($lname)) && ctype_alpha($lname);
     }
 
     /** validAge() returns true if age is not empty and contains
