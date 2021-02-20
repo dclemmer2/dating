@@ -23,32 +23,32 @@ class Validate
         return !empty(trim($name)) && ctype_alpha($name);
     }
 
-    /** validAge() returns true if age contains
+    /** validAge() returns true if age is not empty and contains
      * only numbers and is between 18 and 118
      * @param int $age
      * @return boolean
      */
     function validAge($age)
     {
-        return is_numeric($age) && 18 <= $age && $age <= 118;
+        return !empty(is_numeric($age)) && 18 <= $age && $age <= 118;
     }
 
-    /** validPhone() returns true if phone number is valid
+    /** validPhone() returns true if phone number is not empty and valid
      * @param String $phone
      * @return boolean
      */
     function validPhone($phone)
     {
-        return preg_match("/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/", $phone);
+        return !empty(preg_match("/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/", $phone));
     }
 
-    /** validEmail() returns true if email is valid
+    /** validEmail() returns true if email is not empty and valid
      * @param String $email
      * @return boolean
      */
     function validEmail($email)
     {
-        return strpos($email, '@') && strpos($email, '.');
+        return !empty(strpos($email, '@')) && strpos($email, '.');
     }
 
     /** validOutdoor() returns true if selected outdoor interests are all in
