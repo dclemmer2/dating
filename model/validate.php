@@ -51,23 +51,6 @@ class Validate
         return !empty(strpos($email, '@')) && strpos($email, '.');
     }
 
-    /** validOutdoor() returns true if selected outdoor interests are all in
-     * the list of valid options
-     * @param String $selectedOutdoor
-     * @return boolean
-     */
-    function validOutdoor($selectedOutdoor)
-    {
-        //Get valid outdoor activities from data layer
-        $validOutdoor = $this->_dataLayer->getOutdoor();
-
-        //Check every selected outdoor activity
-        foreach ($selectedOutdoor as $selected) {
-
-            return !in_array($selected, $validOutdoor);
-        }
-    }
-
     /** validIndoor() returns true if selected indoor interests are all in
      * the list of valid options
      * @param String $selectedIndoor
@@ -82,6 +65,23 @@ class Validate
         foreach ($selectedIndoor as $selected) {
 
             return !in_array($selected, $validIndoor);
+        }
+    }
+
+    /** validOutdoor() returns true if selected outdoor interests are all in
+     * the list of valid options
+     * @param String $selectedOutdoor
+     * @return boolean
+     */
+    function validOutdoor($selectedOutdoor)
+    {
+        //Get valid outdoor activities from data layer
+        $validOutdoor = $this->_dataLayer->getOutdoor();
+
+        //Check every selected outdoor activity
+        foreach ($selectedOutdoor as $selected) {
+
+            return !in_array($selected, $validOutdoor);
         }
     }
 }
