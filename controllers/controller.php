@@ -73,11 +73,18 @@ class Controller
                 $_SESSION['phone'] = $userPhone;
             } //Email is not valid -> Set an error in F3 hive
             else {
-                $this->_f3->set('errors["email"]', "Email cannot be blank and must be a valid email");
+                $this->_f3->set('errors["phone"]', "Phone cannot be blank and must be a valid number");
+            }
+
+            //If there are no errors, redirect to /profile
+            if (empty($this->_f3->get('errors'))) {
+                // $_SESSION['order'] = $order;
+                $this->_f3->reroute('/profile');
             }
         }
 
-        //  $this->_f3->set('userFood', isset($userFood) ? $userFood : "");
+        //sticky
+        //$this->_f3->set('userFood', isset($userFood) ? $userFood : "");
         //  $this->_f3->set('userMeal', isset($userMeal) ? $userMeal : "");
 
         //Display a view
@@ -121,10 +128,9 @@ class Controller
             //If there are no errors, redirect to /profile
             if (empty($this->_f3->get('errors'))) {
                 // $_SESSION['order'] = $order;
-                $this->_f3->reroute('/profile');
+                $this->_f3->reroute('/interests');
             }
         }
-
 
         //Display a view
         $view = new Template();

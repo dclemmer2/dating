@@ -17,6 +17,9 @@ require_once('vendor/autoload.php');
 //Start a session
 session_start();
 
+//Create an instance of the Base class
+$f3 = Base::instance();
+
 $validator = new Validate();
 $dataLayer = new DataLayer();
 //$order = new Order();
