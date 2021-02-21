@@ -28,6 +28,13 @@ profile.html Page containing a form with profile info for a dating website
                 <label class="font-weight-bold">Seeking</label><br>
                 <label class="radioFormat"><input type="radio" name="seeking" id="male" value="male">&ensp;Male</label>
                 <label class="radioFormat"><input type="radio" name="seeking" id="female" value="female">&ensp;Female</label><br>
+
+                <repeat group = "{{ @gender }}" value="{{ @genderOption }}">
+                    <label><input type="radio" name="seeking" id="{{ @genderOption }}" value="{{ @genderOption }}"
+                        <check if="{{ @genderOption == @genderSeeking }}">checked</check>> {{ucfirst(@genderOption) }}
+                        </input></label><br>
+                </repeat>
+
             </div>
             <div class="form-group col-md-6">
                 <label class="bioDiv font-weight-bold" for="bio">Biography</label>

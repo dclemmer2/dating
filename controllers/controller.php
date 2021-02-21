@@ -113,6 +113,7 @@ class Controller
 
             //Get the data from the POST array
             $userEmail = trim($_POST['email']);
+            $genderSeeking = $_POST['seeking'];
 
             //If email is valid --> Store in session
             if ($validator->validEmail($userEmail)) {
@@ -127,8 +128,13 @@ class Controller
             $_SESSION['state'] = $_POST['state'];
 
             //If gender seeking is input, store in session
-            if (isset($_POST['seeking'])) {
-                $_SESSION['seeking'] = $_POST['seeking'];
+            if (isset($genderSeeking)) {
+                if ($validator->validGender($genderSeeking)) {
+                    $_SESSION['seeking'] = $genderSeeking;
+                } //Data is not valid -> We've been spoofed!
+                else {
+                    $this->_f3->set('errors["seeking"]', "Go away, evildoer!");
+                }
             }
 
             //If bio is input, store in session
@@ -142,6 +148,11 @@ class Controller
                 $this->_f3->reroute('/interests');
             }
         }
+
+        $this->_f3->set('gender', $dataLayer->getGender());
+
+        //Make form sticky
+        $this->_f3->set('userGender', isset($genderSeeking) ? $genderSeeking : "");
 
         //Display a view
         $view = new Template();
@@ -181,18 +192,18 @@ class Controller
                     $this->_f3->set('errors["outdoor"]', "Go away, evildoer!");
                 }
 
-             /*   if(isset($_POST['indoor'])) {
-                    $_SESSION['indoor'] = implode(", ", $_POST['indoor']) . ",";
-                }
-                else {
-                    $_SESSION['indoor'] = "";
-                }
-                if(isset($_POST['outdoor'])) {
-                    $_SESSION['outdoor'] = implode(", ", $_POST['outdoor']);
-                }
-                else {
-                    $_SESSION['outdoor'] = "";
-                }*/
+                /*   if(isset($_POST['indoor'])) {
+                       $_SESSION['indoor'] = implode(", ", $_POST['indoor']) . ",";
+                   }
+                   else {
+                       $_SESSION['indoor'] = "";
+                   }
+                   if(isset($_POST['outdoor'])) {
+                       $_SESSION['outdoor'] = implode(", ", $_POST['outdoor']);
+                   }
+                   else {
+                       $_SESSION['outdoor'] = "";
+                   }*/
             }
 
             //If there are no errors, redirect user to interests page
