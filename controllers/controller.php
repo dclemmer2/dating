@@ -33,6 +33,7 @@ class Controller
             $userFirstName = $_POST['fname'];
             $userLastName = $_POST['lname'];
             $userAge = trim($_POST['age']);
+            $userGender = $_POST['gender'];
             $userPhone = $_POST['phone'];
 
             //If first name is valid --> Store in session
@@ -54,8 +55,13 @@ class Controller
             }
 
             //If gender is input, store in session
-            if (isset($_POST['gender'])) {
-                $_SESSION['gender'] = $_POST['gender'];
+            if (isset($userGender)) {
+                if ($validator->validGender($userGender)) {
+                    $_SESSION['gender'] = $userGender;
+                } //Data is not valid -> We've been spoofed!
+                else {
+                    $this->_f3->set('errors["gender"]', "Go away, evildoer!");
+                }
             }
 
             //If age is valid --> Store in session
@@ -83,8 +89,13 @@ class Controller
             }
         }
 
-        //sticky
-        //$this->_f3->set('userFood', isset($userFood) ? $userFood : "");
+        $this->_f3->set('gender', $dataLayer->getGender());
+
+        //Make form sticky
+        $this->_f3->set('userFName', isset($userFirstName) ? $userFirstName : "");
+        $this->_f3->set('userLName', isset($userLastName) ? $userLastName : "");
+        $this->_f3->set('userAge', isset($userAge) ? $userAge : "");
+        $this->_f3->set('userGender', isset($userGender) ? $userGender : "");
         //  $this->_f3->set('userMeal', isset($userMeal) ? $userMeal : "");
 
         //Display a view
@@ -146,7 +157,6 @@ class Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //If indoor interests were selected
             if (isset($_POST['indoor'])) {
-
                 //Get indoor activities from post array
                 $indoorActivities = $_POST['indoor'];
                 $outdoorActivities = $_POST['outdoor'];

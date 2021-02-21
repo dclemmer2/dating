@@ -7,6 +7,14 @@
 
 class DataLayer
 {
+    /** getGender() returns an array of gender options
+     *  @return array
+     */
+    function getGender()
+    {
+        return array("male", "female");
+    }
+
     /** getIndoor() returns an array of indoor activities
      *  @return array
      */

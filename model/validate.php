@@ -43,6 +43,16 @@ class Validate
         return !empty(is_numeric($age)) && 18 <= $age && $age <= 118;
     }
 
+    /** validGender() returns true if selected gender is in list of valid options
+     * @param String $gender
+     * @return boolean
+     */
+    function validGender($gender)
+    {
+        $validGender = $this->_dataLayer->getGender();
+        return in_array($gender, $validGender);
+    }
+
     /** validPhone() returns true if phone number is not empty and valid
      * @param String $phone
      * @return boolean
