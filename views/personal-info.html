@@ -8,22 +8,30 @@ personal-info.html Page containing a form with personal info for a dating websit
 <div class="content border p-4 rounded">
     <h1>Personal Info</h1>
     <hr>
-    <form method="post" action="profile">
+    <form method="post" action="#">
         <div class="form-row">
             <div class="form-group col-sm-8">
                 <label for="fname" class="font-weight-bold">First Name</label><br>
-                <input type="text" class="form-control" id="fname" name="fname" placeholder="Sarah"><br>
+                <input type="text" class="form-control" id="fname" name="fname" placeholder="Sarah">
+                <check if="{{ isset(@errors['fname']) }}">{{ @errors['fname'] }}</check><br>
+
                 <label for="lname" class="font-weight-bold">Last Name</label><br>
-                <input type="text" class="form-control" id="lname" name="lname" placeholder="Smith"><br>
+                <input type="text" class="form-control" id="lname" name="lname" placeholder="Smith">
+                <check if="{{ isset(@errors['lname']) }}">{{ @errors['lname'] }}</check><br>
+
                 <label for="age" class="font-weight-bold">Age</label><br>
-                <input type="text" class="form-control" id="age" name="age" placeholder="25"><br>
+                <input type="text" class="form-control" id="age" name="age" placeholder="25">
+                <check if="{{ isset(@errors['age']) }}">{{ @errors['age'] }}</check><br>
+
                 <label class="font-weight-bold">Gender</label><br>
                 <label class="radioFormat"><input type="radio" name="gender" id="male" value="male">&ensp;Male</label>
                 <label class="radioFormat"><input type="radio" name="gender" id="female" value="female">&ensp;Female</label><br>
+
                 <label for="phone" class="font-weight-bold">Phone Number</label>
                 <input type="tel" class="form-control" id="phone" name="phone" maxlength="12"
                        pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"
-                       placeholder="222-333-4444"><br><br>
+                       placeholder="222-333-4444">
+                <check if="{{ isset(@errors['phone']) }}">{{ @errors['phone'] }}</check><br><br>
             </div>
             <div class="form-group col-sm-4">
                 <p id="privacyPol" class="rounded text-center"><strong>Note:</strong> All information
