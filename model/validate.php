@@ -68,7 +68,7 @@ class Validate
      */
     function validEmail($email)
     {
-        return !empty(strpos($email, '@')) && strpos($email, '.');
+        return !empty(preg_match("/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/", $email));
     }
 
     /** validIndoor() returns true if selected indoor interests are all in

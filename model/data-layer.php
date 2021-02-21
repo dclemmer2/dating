@@ -20,8 +20,8 @@ class DataLayer
      */
     function getIndoor()
     {
-        return array("tv", "puzzles", "movies", "reading", "cooking",
-            "playing cards", "board games", "videogames");
+        return array("tv", "movies", "reading", "cooking",
+            "puzzles", "playing cards", "board games", "videogames");
     }
 
     /** getOutdoor() returns an array of outdoor activities
