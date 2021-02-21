@@ -12,33 +12,41 @@ personal-info.html Page containing a form with personal info for a dating websit
         <div class="form-row">
             <div class="form-group col-sm-8">
                 <label for="fname" class="font-weight-bold">First Name</label><br>
-                <input type="text" class="form-control" id="fname" name="fname" placeholder="Sarah" value="{{ @userFName }}">
-                <check if="{{ isset(@errors['fname']) }}">{{ @errors['fname'] }}</check><br>
+                <input type="text" class="form-control" id="fname" name="fname" placeholder="Sarah"
+                       value="{{ @userFName }}">
+                <check if="{{ isset(@errors['fname']) }}">{{ @errors['fname'] }}</check>
+                <br>
 
                 <label for="lname" class="font-weight-bold">Last Name</label><br>
-                <input type="text" class="form-control" id="lname" name="lname" placeholder="Smith" value="{{ @userLName }}">
-                <check if="{{ isset(@errors['lname']) }}">{{ @errors['lname'] }}</check><br>
+                <input type="text" class="form-control" id="lname" name="lname" placeholder="Smith"
+                       value="{{ @userLName }}">
+                <check if="{{ isset(@errors['lname']) }}">{{ @errors['lname'] }}</check>
+                <br>
 
                 <label for="age" class="font-weight-bold">Age</label><br>
                 <input type="text" class="form-control" id="age" name="age" placeholder="25" value="{{ @userAge }}">
-                <check if="{{ isset(@errors['age']) }}">{{ @errors['age'] }}</check><br>
+                <check if="{{ isset(@errors['age']) }}">{{ @errors['age'] }}</check>
+                <br>
 
                 <label class="font-weight-bold">Gender</label><br>
-                <repeat group = "{{ @gender }}" value="{{ @genderOption }}">
-                    <label><input type="radio" name="gender" id="{{ @genderOption }}" value="{{ @genderOption }}"
-                        <check if="{{ @genderOption == @userGender }}">checked</check>> {{ucfirst(@genderOption) }}
-                        </input></label><br>
+                <repeat group="{{ @gender }}" value="{{ @genderOption }}">
+                    <label class="radioFormat"><input type="radio" name="gender" id="{{ @genderOption }}" value="{{ @genderOption }}"
+                        <check if="{{ @genderOption == @userGender }}">checked</check>
+                        > {{ucfirst(@genderOption) }}
+                        </input></label>&emsp;
                 </repeat>
-
+                <br>
 
                 <label for="phone" class="font-weight-bold">Phone Number</label>
-                <input type="tel" class="form-control" id="phone" name="phone" maxlength="12"
-                       placeholder="222-333-4444">
-                <check if="{{ isset(@errors['phone']) }}">{{ @errors['phone'] }}</check><br><br>
+                <input type="tel" class="form-control" id="phone" name="phone" value="{{ @userPhone }}"
+                       maxlength="12" placeholder="222-333-4444">
+                <check if="{{ isset(@errors['phone']) }}">{{ @errors['phone'] }}</check>
+                <br><br>
             </div>
             <div class="form-group col-sm-4">
                 <p id="privacyPol" class="rounded text-center"><strong>Note:</strong> All information
-                    entered is protected by our <span class="text-primary">privacy policy</span>. Profile information can
+                    entered is protected by our <span class="text-primary">privacy policy</span>. Profile information
+                    can
                     only be viewed by others with your permission. </p>
             </div>
         </div>

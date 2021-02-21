@@ -96,7 +96,7 @@ class Controller
         $this->_f3->set('userLName', isset($userLastName) ? $userLastName : "");
         $this->_f3->set('userAge', isset($userAge) ? $userAge : "");
         $this->_f3->set('userGender', isset($userGender) ? $userGender : "");
-        //  $this->_f3->set('userMeal', isset($userMeal) ? $userMeal : "");
+        $this->_f3->set('userPhone', isset($userPhone) ? $userPhone : "");
 
         //Display a view
         $view = new Template();
@@ -114,6 +114,7 @@ class Controller
             //Get the data from the POST array
             $userEmail = trim($_POST['email']);
             $genderSeeking = $_POST['seeking'];
+            $userBio= $_POST['bio'];
 
             //If email is valid --> Store in session
             if ($validator->validEmail($userEmail)) {
@@ -138,8 +139,8 @@ class Controller
             }
 
             //If bio is input, store in session
-            if (isset($_POST['bio'])) {
-                $_SESSION['bio'] = $_POST['bio'];
+            if (isset($userBio)) {
+                $_SESSION['bio'] = $userBio;
             }
 
             //If there are no errors, redirect to /profile
@@ -152,7 +153,9 @@ class Controller
         $this->_f3->set('gender', $dataLayer->getGender());
 
         //Make form sticky
+        $this->_f3->set('userEmail', isset($userEmail) ? $userEmail : "");
         $this->_f3->set('userGender', isset($genderSeeking) ? $genderSeeking : "");
+        $this->_f3->set('userBio', isset($userBio) ? $userBio : "");
 
         //Display a view
         $view = new Template();
@@ -214,6 +217,10 @@ class Controller
 
         $this->_f3->set('indoor', $dataLayer->getIndoor());
         $this->_f3->set('outdoor', $dataLayer->getOutdoor());
+
+        //Make form sticky
+        $this->_f3->set('userIndoor', isset($indoorActivities) ? $indoorActivities : "");
+        $this->_f3->set('userOutdoor', isset($outdoorActivities) ? $outdoorActivities : "");
 
         //Display a view
         $view = new Template();

@@ -10,13 +10,14 @@ interests.html Page containing a form with interests for a dating website
     <hr>
     <form method="post" action="#">
         <label class="font-weight-bold">Indoor Interests</label><br>
+
+        <repeat group="{{ @indoor }}" value="{{ @activity }}">
+            <label><input type="checkbox" name="indoor[]" value="{{ @userIndoor }}"> {{ ucfirst(@activity) }}</label>
+        </repeat>
+        <check if="{{ @errors['indoor'] }}">{{ @errors['indoor'] }}</check>
+
         <div class="form-row">
             <div class="form-group col">
-                <repeat group="{{ @indoor }}" value = "{{ @activity }}">
-                    <label><input type="checkbox" name="indoor[]" value="{{ @activity }}"> {{ ucfirst(@activity) }}</label><br>
-                </repeat><br>
-                <check if="{{ @errors['indoor'] }}">{{ @errors['indoor'] }}</check>
-
                 <label><input type="checkbox" name="indoor[]" value="tv"> tv</label><br>
                 <label><input type="checkbox" name="indoor[]" value="puzzles"> puzzles</label>
             </div>
