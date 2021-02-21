@@ -49,7 +49,7 @@ class Validate
      */
     function validPhone($phone)
     {
-        return !empty(preg_match("/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/", $phone));
+        return !empty($phone) && preg_match("/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/", $phone);
     }
 
     /** validEmail() returns true if email is not empty and valid

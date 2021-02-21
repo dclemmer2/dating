@@ -29,7 +29,6 @@ personal-info.html Page containing a form with personal info for a dating websit
 
                 <label for="phone" class="font-weight-bold">Phone Number</label>
                 <input type="tel" class="form-control" id="phone" name="phone" maxlength="12"
-                       pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"
                        placeholder="222-333-4444">
                 <check if="{{ isset(@errors['phone']) }}">{{ @errors['phone'] }}</check><br><br>
             </div>
