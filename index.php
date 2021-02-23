@@ -1,8 +1,8 @@
 <?php
 /*
  * Dana Clemmer
- * 2/8/21
- * index.php controller page that sets up fat free and routes for a dating website
+ * index.php
+ * Controller page that sets up fat free and routes for dating website
  */
 
 //This is my CONTROLLER

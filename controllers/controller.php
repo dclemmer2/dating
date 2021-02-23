@@ -93,7 +93,8 @@ class Controller
             }
         }
 
-        $this->_f3->set('gender', $dataLayer->getGender());
+        //add genders array
+        $this->_f3->set('genders', $dataLayer->getGender());
 
         //Make form sticky
         $this->_f3->set('userFName', isset($userFirstName) ? $userFirstName : "");
@@ -119,7 +120,7 @@ class Controller
             //Get the data from the POST array
             $userEmail = trim($_POST['email']);
             $genderSeeking = $_POST['seeking'];
-            $userBio= $_POST['bio'];
+            $userBio = $_POST['bio'];
             $userState = $_POST['state'];
 
             //If email is valid --> Store in session
@@ -179,30 +180,20 @@ class Controller
 
         //If the form has been submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            //If indoor interests were selected
-            if (isset($_POST['indoor'])) {
-                //Get indoor activities from post array
-                $indoorActivities = $_POST['indoor'];
-                $outdoorActivities = $_POST['outdoor'];
+            //Get activities from post array
+            $indoorActivities = $_POST['indoor'];
+            $outdoorActivities = $_POST['outdoor'];
 
+            //If indoor interests were selected
+            if (isset($indoorActivities)) {
                 //Data is valid -> Add to session
                 if ($validator->validIndoor($indoorActivities)) {
                     // $condimentString = implode(", ", $indoorActivities);
                     // $_SESSION['indoor']->setCondiments($condimentString);
-                    $_SESSION['indoor'] = implode(", ", $indoorActivities);
+                    $_SESSION['indoorActs'] = implode(", ", $indoorActivities) . ",";
                 } //Data is not valid -> We've been spoofed!
                 else {
                     $this->_f3->set('errors["indoor"]', "Go away, evildoer!");
-                }
-
-                //Data is valid -> Add to session
-                if ($validator->validOutdoor($outdoorActivities)) {
-                    // $condimentString = implode(", ", $indoorActivities);
-                    // $_SESSION['indoor']->setCondiments($condimentString);
-                    $_SESSION['outdoor'] = implode(", ", $outdoorActivities);
-                } //Data is not valid -> We've been spoofed!
-                else {
-                    $this->_f3->set('errors["outdoor"]', "Go away, evildoer!");
                 }
 
                 /*   if(isset($_POST['indoor'])) {
@@ -210,7 +201,22 @@ class Controller
                    }
                    else {
                        $_SESSION['indoor'] = "";
-                   }
+                   }*/
+            }
+
+            //If outdoor interests were selected
+            if (isset($outdoorActivities)) {
+                //Data is valid -> Add to session
+                if ($validator->validOutdoor($outdoorActivities)) {
+                    // $condimentString = implode(", ", $indoorActivities);
+                    // $_SESSION['indoor']->setCondiments($condimentString);
+                    $_SESSION['outdoorActs'] = implode(", ", $outdoorActivities);
+                } //Data is not valid -> We've been spoofed!
+                else {
+                    $this->_f3->set('errors["outdoor"]', "Go away, evildoer!");
+                }
+
+                /*
                    if(isset($_POST['outdoor'])) {
                        $_SESSION['outdoor'] = implode(", ", $_POST['outdoor']);
                    }
@@ -224,14 +230,9 @@ class Controller
                 $this->_f3->reroute('/summary');
             }
         }
-
         //get arrays
         $this->_f3->set('indoor', $dataLayer->getIndoor());
         $this->_f3->set('outdoor', $dataLayer->getOutdoor());
-
-        //Make form sticky
-        $this->_f3->set('userIndoor', isset($indoorActivities) ? $indoorActivities : "");
-        $this->_f3->set('userOutdoor', isset($outdoorActivities) ? $outdoorActivities : "");
 
         //Display a view
         $view = new Template();
@@ -241,6 +242,7 @@ class Controller
     /** Display summary page */
     function summary()
     {
+        var_dump($_SESSION);
         //Display a view
         $view = new Template();
         echo $view->render('views/summary.html');

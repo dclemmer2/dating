@@ -84,9 +84,10 @@ class Validate
         //Check every selected indoor activity
         foreach ($selectedIndoor as $selected) {
 
-            return !in_array($selected, $validIndoor);
+            return in_array($selected, $validIndoor);
         }
     }
+
 
     /** validOutdoor() returns true if selected outdoor interests are all in
      * the list of valid options
@@ -101,7 +102,7 @@ class Validate
         //Check every selected outdoor activity
         foreach ($selectedOutdoor as $selected) {
 
-            return !in_array($selected, $validOutdoor);
+            return in_array($selected, $validOutdoor);
         }
     }
 }

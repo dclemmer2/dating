@@ -12,7 +12,7 @@ Page containing summary of form submission for dating website
                     <td>Name: {{ @SESSION.fname }} {{ @SESSION.lname }}</td>
                 </tr>
                 <tr>
-                    <td>Gender: {{ @SESSION.gender }}</td>
+                    <td>Gender: {{ ucfirst(@SESSION.gender) }}</td>
                 </tr>
                 <tr>
                     <td>Age: {{ @SESSION.age }}</td>
@@ -24,13 +24,13 @@ Page containing summary of form submission for dating website
                     <td>Email: {{ @SESSION.email }}</td>
                 </tr>
                 <tr>
-                    <td>State: {{ @SESSION.state }}</td>
+                    <td>State: {{ ucfirst(@SESSION.state) }}</td>
                 </tr>
                 <tr>
-                    <td>Seeking: {{ @SESSION.seeking }}</td>
+                    <td>Seeking: {{ ucfirst(@SESSION.seeking) }}</td>
                 </tr>
                 <tr>
-                    <td>Interests: {{ @SESSION.indoor }} {{ @SESSION.outdoor }}</td>
+                    <td>Interests: {{ @SESSION.indoorActs }} {{ @SESSION.outdoorActs }}</td>
                 </tr>
             </table>
         </div>
