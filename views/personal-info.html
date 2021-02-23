@@ -33,7 +33,6 @@ Page containing a form with personal info for dating website
                         </input></label>&emsp;
                 </repeat><br>
                 <check if="{{ isset(@errors['gender']) }}"><span class="text-danger">{{ @errors['gender'] }}</span></check>
-                <br>
 
                 <label for="phone" class="font-weight-bold">Phone Number</label>
                 <input type="tel" class="form-control" id="phone" name="phone" value="{{ @userPhone }}"
