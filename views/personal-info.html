@@ -29,10 +29,10 @@ Page containing a form with personal info for dating website
                 <br>
 
                 <label class="font-weight-bold">Gender</label><br>
-                <repeat group="{{ @gender }}" value="{{ @genderOption }}">
-                    <label class="radioFormat"><input type="radio" name="gender" id="{{ @genderOption }}" value="{{ @genderOption }}"
-                        <check if="{{ @genderOption == @userGender }}">checked</check>
-                        > {{ucfirst(@genderOption) }}
+                <repeat group="{{ @genders }}" value="{{ @gender }}">
+                    <label class="radioFormat"><input type="radio" name="gender" id="{{ @gender }}" value="{{ @gender }}"
+                        <check if="{{ @gender == @userGender }}">checked</check>
+                        > {{ucfirst(@gender) }}
                         </input></label>&emsp;
                 </repeat>
                 <br>

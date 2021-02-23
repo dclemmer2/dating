@@ -16,17 +16,19 @@ Page containing a form with profile info for dating website
                        value="{{ @userEmail }}" placeholder="my_email@gmail.com">
                 <check if="{{ isset(@errors['email']) }}">{{ @errors['email'] }}</check><br>
 
-                <label class="mr-sm-2 font-weight-bold" for="inputState">State</label>
-                <select class="custom-select mr-sm-2" id="inputState" name="state">
-                    <option>Choose...</option>
-                    <option selected value="WA">Washington</option>
-                    <option value="OR">Oregon</option>
+                <label class="font-weight-bold" for="inputState">State</label>
+                <select class="custom-select" id="inputState" name="state">
+                    <option selected>Choose...</option>
+                    <repeat group="{{ @states }}" value = "{{ @state }}">
+                        <option value="{{ @state }}" <check if="{{ @state == @userState }}">selected</check>>
+                        {{ ucfirst(@state) }}</option>
+                    </repeat>
                 </select><br><br>
 
                 <label class="font-weight-bold">Seeking</label><br>
-                <repeat group = "{{ @gender }}" value="{{ @genderOption }}">
-                    <label class="radioFormat"><input type="radio" name="seeking" id="{{ @genderOption }}" value="{{ @genderOption }}"
-                        <check if="{{ @genderOption == @genderSeeking }}">checked</check>> {{ucfirst(@genderOption) }}
+                <repeat group = "{{ @genders }}" value="{{ @gender }}">
+                    <label class="radioFormat"><input type="radio" name="seeking" id="{{ @gender }}" value="{{ @gender }}"
+                        <check if="{{ @gender == @genderSeeking }}">checked</check>> {{ucfirst(@gender) }}
                         </input></label>&emsp;
                 </repeat>
 

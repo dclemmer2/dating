@@ -120,6 +120,7 @@ class Controller
             $userEmail = trim($_POST['email']);
             $genderSeeking = $_POST['seeking'];
             $userBio= $_POST['bio'];
+            $userState = $_POST['state'];
 
             //If email is valid --> Store in session
             if ($validator->validEmail($userEmail)) {
@@ -131,7 +132,7 @@ class Controller
             }
 
             //store state in session
-            $_SESSION['state'] = $_POST['state'];
+            $_SESSION['state'] = $userState;
 
             //If gender seeking is input, store in session
             if (isset($genderSeeking)) {
@@ -155,13 +156,15 @@ class Controller
             }
         }
 
-        //get gender array
-        $this->_f3->set('gender', $dataLayer->getGender());
+        //get arrays
+        $this->_f3->set('genders', $dataLayer->getGender());
+        $this->_f3->set('states', $dataLayer->getStates());
 
         //Make form sticky
         $this->_f3->set('userEmail', isset($userEmail) ? $userEmail : "");
         $this->_f3->set('genderSeeking', isset($genderSeeking) ? $genderSeeking : "");
         $this->_f3->set('userBio', isset($userBio) ? $userBio : "");
+        $this->_f3->set('userState', isset($userState) ? $userState : "");
 
         //Display a view
         $view = new Template();
