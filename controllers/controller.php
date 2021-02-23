@@ -46,7 +46,7 @@ class Controller
                 $_SESSION['fname'] = $userFirstName;
             } //First name is not valid -> Set an error in F3 hive
             else {
-                $this->_f3->set('errors["fname"]', "First name cannot be blank and must contain only characters");
+                $this->_f3->set('errors["fname"]', "*First name cannot be blank and must contain only characters");
             }
 
             //If last name is valid --> Store in session
@@ -55,7 +55,7 @@ class Controller
                 $_SESSION['lname'] = $userLastName;
             } //Last name is not valid -> Set an error in F3 hive
             else {
-                $this->_f3->set('errors["lname"]', "Last name cannot be blank and must contain only characters");
+                $this->_f3->set('errors["lname"]', "*Last name cannot be blank and must contain only characters");
             }
 
             //If gender is input, store in session
@@ -64,7 +64,7 @@ class Controller
                     $_SESSION['gender'] = $userGender;
                 } //Data is not valid -> We've been spoofed!
                 else {
-                    $this->_f3->set('errors["gender"]', "Go away, evildoer!");
+                    $this->_f3->set('errors["gender"]', "*Go away, evildoer!");
                 }
             }
 
@@ -74,7 +74,7 @@ class Controller
                 $_SESSION['age'] = $userAge;
             } //Age is not valid -> Set an error in F3 hive
             else {
-                $this->_f3->set('errors["age"]', "Age cannot be blank and must be a valid age between 18 and 118");
+                $this->_f3->set('errors["age"]', "*Age cannot be blank and must be a valid age between 18 and 118");
             }
 
             //If phone is valid --> Store in session
@@ -83,7 +83,7 @@ class Controller
                 $_SESSION['phone'] = $userPhone;
             } //Email is not valid -> Set an error in F3 hive
             else {
-                $this->_f3->set('errors["phone"]', "Phone cannot be blank and must be a valid number");
+                $this->_f3->set('errors["phone"]', "*Phone cannot be blank and must be a valid number");
             }
 
             //If there are no errors, redirect to /profile
@@ -129,7 +129,7 @@ class Controller
                 $_SESSION['email'] = $userEmail;
             } //Email is not valid -> Set an error in F3 hive
             else {
-                $this->_f3->set('errors["email"]', "Email cannot be blank and must be a valid email");
+                $this->_f3->set('errors["email"]', "*Email cannot be blank and must be a valid email");
             }
 
             //store state in session
@@ -141,7 +141,7 @@ class Controller
                     $_SESSION['seeking'] = $genderSeeking;
                 } //Data is not valid -> We've been spoofed!
                 else {
-                    $this->_f3->set('errors["seeking"]', "Go away, evildoer!");
+                    $this->_f3->set('errors["seeking"]', "*Go away, evildoer!");
                 }
             }
 
@@ -193,7 +193,7 @@ class Controller
                     $_SESSION['indoorActs'] = implode(", ", $indoorActivities) . ",";
                 } //Data is not valid -> We've been spoofed!
                 else {
-                    $this->_f3->set('errors["indoor"]', "Go away, evildoer!");
+                    $this->_f3->set('errors["indoor"]', "*Go away, evildoer!");
                 }
 
                 /*   if(isset($_POST['indoor'])) {
@@ -213,7 +213,7 @@ class Controller
                     $_SESSION['outdoorActs'] = implode(", ", $outdoorActivities);
                 } //Data is not valid -> We've been spoofed!
                 else {
-                    $this->_f3->set('errors["outdoor"]', "Go away, evildoer!");
+                    $this->_f3->set('errors["outdoor"]', "*Go away, evildoer!");
                 }
 
                 /*
