@@ -68,7 +68,7 @@ class Validate
      */
     function validEmail($email)
     {
-        return !empty(preg_match("/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/", $email));
+        return !empty(preg_match("/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/", $email));
     }
 
     /** validState() returns true if selected state is in list of valid options
