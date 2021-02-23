@@ -10,36 +10,27 @@ Page containing a form with interests for dating website
     <hr>
     <form method="post" action="#">
         <label class="font-weight-bold">Indoor Interests</label><br>
-        <repeat group="{{ @indoor }}" value="{{ @activity }}">
-            <label><input type="checkbox" name="indoor[]" value="{{ @activity }}"> {{ ucfirst(@activity) }}</label>
-        </repeat><br>
+        <div class="form-row">
+            <repeat group="{{ @indoor }}" value="{{ @activity }}">
+                <div class="form-group col-3">
+                    <label><input type="checkbox" name="indoor[]" value="{{ @activity }}">
+                        {{ ucfirst(@activity) }}</label>
+                </div>
+            </repeat>
+        </div>
         <check if="{{ @errors['indoor'] }}"><p class="text-danger">{{ @errors['indoor'] }}</p></check>
 
-       <!-- <div class="form-row">
-            <div class="form-group col">
-                <label><input type="checkbox" name="indoor[]" value="tv"> tv</label><br>
-                <label><input type="checkbox" name="indoor[]" value="puzzles"> puzzles</label>
-            </div>
-            <div class="form-group col">
-                <label><input type="checkbox" name="indoor[]" value="movies"> movies</label><br>
-                <label><input type="checkbox" name="indoor[]" value="reading"> reading</label>
-            </div>
-            <div class="form-group col">
-                <label><input type="checkbox" name="indoor[]" value="cooking"> cooking</label><br>
-                <label><input type="checkbox" name="indoor[]" value="playing cards"> playing cards</label>
-            </div>
-            <div class="form-group col">
-                <label><input type="checkbox" name="indoor[]" value="board games"> board games</label><br>
-                <label><input type="checkbox" name="indoor[]" value="video games"> video games</label>
-            </div>
-        </div>-->
-        <br>
         <label class="font-weight-bold">Outdoor Interests</label><br>
-        <repeat group="{{ @outdoor }}" value="{{ @activity }}">
-            <label><input type="checkbox" name="outdoor[]" value="{{ @activity }}"> {{ ucfirst(@activity) }}</label>
-        </repeat><br>
+        <div class="form-row">
+            <repeat group="{{ @outdoor }}" value="{{ @activity }}">
+                <div class="form-group col-3">
+                    <label><input type="checkbox" name="outdoor[]" value="{{ @activity }}"> {{ ucfirst(@activity)
+                        }}</label>
+                </div>
+            </repeat>
+        </div>
         <check if="{{ @errors['outdoor'] }}"><p class="text-danger">{{ @errors['outdoor'] }}</p></check>
-        <br>
+
         <div class="text-right">
             <input class="rounded text-white font-weight-bold" type="submit" value="Next >">
         </div>
