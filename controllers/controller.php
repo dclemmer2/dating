@@ -135,8 +135,11 @@ class Controller
 
             //If state is input, store in session
             if (isset($userState)) {
-                if ($validator->validState($userState) || $userState == "Choose...") {
+                if ($validator->validState($userState)) {
                     $_SESSION['state'] = $userState;
+                }
+                else if($userState == "Choose...") {
+                    $_SESSION['state'] = "";
                 }
                 //Data is not valid -> We've been spoofed!
                 else {
@@ -173,7 +176,7 @@ class Controller
         //Make form sticky
         $this->_f3->set('userEmail', isset($userEmail) ? $userEmail : "");
         $this->_f3->set('genderSeeking', isset($genderSeeking) ? $genderSeeking : "");
-        $this->_f3->set('userBio', isset($userBio) ? $userBio : "");
+        //$this->_f3->set('userBio', isset($userBio) ? $userBio : "");
         $this->_f3->set('userState', isset($userState) ? $userState : "");
 
         //Display a view
