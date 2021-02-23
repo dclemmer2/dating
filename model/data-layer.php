@@ -31,4 +31,12 @@ class DataLayer
     {
         return array("hiking", "walking", "biking", "climbing", "swimming", "collecting");
     }
+
+    /** getStates() returns an array of states
+     *  @return array
+     */
+    function getStates()
+    {
+        return array("washington", "oregon", "california");
+    }
 }
