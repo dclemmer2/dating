@@ -1,6 +1,10 @@
 <?php
 
-//  controllers/controller.php
+/*
+ * controllers/controller.php
+ * Controller file
+ */
+
 
 class Controller
 {
@@ -103,6 +107,7 @@ class Controller
         echo $view->render('views/personal-info.html');
     }
 
+    /** Display profile page */
     function profile()
     {
         global $validator;
@@ -150,11 +155,12 @@ class Controller
             }
         }
 
+        //get gender array
         $this->_f3->set('gender', $dataLayer->getGender());
 
         //Make form sticky
         $this->_f3->set('userEmail', isset($userEmail) ? $userEmail : "");
-        $this->_f3->set('userGender', isset($genderSeeking) ? $genderSeeking : "");
+        $this->_f3->set('genderSeeking', isset($genderSeeking) ? $genderSeeking : "");
         $this->_f3->set('userBio', isset($userBio) ? $userBio : "");
 
         //Display a view
@@ -162,6 +168,7 @@ class Controller
         echo $view->render('views/profile.html');
     }
 
+    /** Display interests page */
     function interests()
     {
         global $validator;
@@ -215,6 +222,7 @@ class Controller
             }
         }
 
+        //get arrays
         $this->_f3->set('indoor', $dataLayer->getIndoor());
         $this->_f3->set('outdoor', $dataLayer->getOutdoor());
 
@@ -227,6 +235,7 @@ class Controller
         echo $view->render('views/interests.html');
     }
 
+    /** Display summary page */
     function summary()
     {
         //Display a view
