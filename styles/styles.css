@@ -39,7 +39,12 @@ input.rounded {
 
 .bioDiv {
     width: 97%;
-    float: right;
+}
+
+@media(min-width: 767px) {
+    .bioDiv {
+        float: right;
+    }
 }
 
 .content {
