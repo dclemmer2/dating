@@ -71,6 +71,16 @@ class Validate
         return !empty(preg_match("/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/", $email));
     }
 
+    /** validState() returns true if selected state is in list of valid options
+     * @param String $state
+     * @return boolean
+     */
+    function validState($state)
+    {
+        $validState = $this->_dataLayer->getStates();
+        return in_array($state, $validState);
+    }
+
     /** validIndoor() returns true if selected indoor interests are all in
      * the list of valid options
      * @param String $selectedIndoor

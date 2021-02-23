@@ -14,31 +14,31 @@ Page containing a form with personal info for dating website
                 <label for="fname" class="font-weight-bold">First Name</label><br>
                 <input type="text" class="form-control" id="fname" name="fname" placeholder="Sarah"
                        value="{{ @userFName }}">
-                <check if="{{ isset(@errors['fname']) }}"><p class="text-danger">{{ @errors['fname'] }}</p></check>
+                <check if="{{ isset(@errors['fname']) }}"><span class="text-danger">{{ @errors['fname'] }}</span></check><br>
 
                 <label for="lname" class="font-weight-bold">Last Name</label><br>
                 <input type="text" class="form-control" id="lname" name="lname" placeholder="Smith"
                        value="{{ @userLName }}">
-                <check if="{{ isset(@errors['lname']) }}"><p class="text-danger">{{ @errors['lname'] }}</p></check>
+                <check if="{{ isset(@errors['lname']) }}"><span class="text-danger">{{ @errors['lname'] }}</span></check><br>
 
                 <label for="age" class="font-weight-bold">Age</label><br>
                 <input type="text" class="form-control" id="age" name="age" placeholder="25" value="{{ @userAge }}">
-                <check if="{{ isset(@errors['age']) }}"><p class="text-danger">{{ @errors['age'] }}</p></check>
+                <check if="{{ isset(@errors['age']) }}"><span class="text-danger">{{ @errors['age'] }}</span></check><br>
 
                 <label class="font-weight-bold">Gender</label><br>
                 <repeat group="{{ @genders }}" value="{{ @gender }}">
                     <label class="radioFormat"><input type="radio" name="gender" id="{{ @gender }}" value="{{ @gender }}"
-                        <check if="{{ @gender == @userGender }}">checked</check>
-                        > {{ucfirst(@gender) }}
+                        <check if="{{ @gender == @userGender }}">checked</check>>
+                        {{ucfirst(@gender) }}
                         </input></label>&emsp;
                 </repeat><br>
-                <check if="{{ isset(@errors['gender']) }}"><p class="text-danger">{{ @errors['gender'] }}</p></check>
+                <check if="{{ isset(@errors['gender']) }}"><span class="text-danger">{{ @errors['gender'] }}</span></check>
                 <br>
 
                 <label for="phone" class="font-weight-bold">Phone Number</label>
                 <input type="tel" class="form-control" id="phone" name="phone" value="{{ @userPhone }}"
                        maxlength="12" placeholder="222-333-4444">
-                <check if="{{ isset(@errors['phone']) }}"><p class="text-danger">{{ @errors['phone'] }}</p></check>
+                <check if="{{ isset(@errors['phone']) }}"><span class="text-danger">{{ @errors['phone'] }}</span></check>
                 <br><br>
             </div>
             <div class="form-group col-sm-4">

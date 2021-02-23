@@ -132,8 +132,17 @@ class Controller
                 $this->_f3->set('errors["email"]', "*Email cannot be blank and must be a valid email");
             }
 
-            //store state in session
-            $_SESSION['state'] = $userState;
+
+            //If state is input, store in session
+            if (isset($userState)) {
+                if ($validator->validState($userState) || $userState == "Choose...") {
+                    $_SESSION['state'] = $userState;
+                }
+                //Data is not valid -> We've been spoofed!
+                else {
+                    $this->_f3->set('errors["state"]', "*Go away, evildoer!");
+                }
+            }
 
             //If gender seeking is input, store in session
             if (isset($genderSeeking)) {
@@ -242,7 +251,8 @@ class Controller
     /** Display summary page */
     function summary()
     {
-        var_dump($_SESSION);
+        //var_dump($_SESSION);
+
         //Display a view
         $view = new Template();
         echo $view->render('views/summary.html');
