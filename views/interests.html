@@ -13,7 +13,7 @@ Page containing a form with interests for dating website
         <repeat group="{{ @indoor }}" value="{{ @activity }}">
             <label><input type="checkbox" name="indoor[]" value="{{ @activity }}"> {{ ucfirst(@activity) }}</label>
         </repeat><br>
-        <check if="{{ @errors['indoor'] }}">{{ @errors['indoor'] }}</check>
+        <check if="{{ @errors['indoor'] }}"><p class="text-danger">{{ @errors['indoor'] }}</p></check>
 
        <!-- <div class="form-row">
             <div class="form-group col">
@@ -38,7 +38,7 @@ Page containing a form with interests for dating website
         <repeat group="{{ @outdoor }}" value="{{ @activity }}">
             <label><input type="checkbox" name="outdoor[]" value="{{ @activity }}"> {{ ucfirst(@activity) }}</label>
         </repeat><br>
-        <check if="{{ @errors['outdoor'] }}">{{ @errors['outdoor'] }}</check>
+        <check if="{{ @errors['outdoor'] }}"><p class="text-danger">{{ @errors['outdoor'] }}</p></check>
         <br>
         <div class="text-right">
             <input class="rounded text-white font-weight-bold" type="submit" value="Next >">

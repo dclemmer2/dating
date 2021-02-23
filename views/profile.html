@@ -14,7 +14,7 @@ Page containing a form with profile info for dating website
                 <label class="font-weight-bold" for="email">Email</label>
                 <input type="text" class="form-control" id="email" name="email"
                        value="{{ @userEmail }}" placeholder="my_email@gmail.com">
-                <check if="{{ isset(@errors['email']) }}">{{ @errors['email'] }}</check><br>
+                <check if="{{ isset(@errors['email']) }}"><p class="text-danger">{{ @errors['email'] }}</p></check>
 
                 <label class="font-weight-bold" for="inputState">State</label>
                 <select class="custom-select" id="inputState" name="state">
@@ -31,6 +31,7 @@ Page containing a form with profile info for dating website
                         <check if="{{ @gender == @genderSeeking }}">checked</check>> {{ucfirst(@gender) }}
                         </input></label>&emsp;
                 </repeat>
+                <check if="{{ isset(@errors['seeking']) }}"><p class="text-danger">{{ @errors['seeking'] }}</p></check>
 
             </div>
             <div class="form-group col-md-6">
