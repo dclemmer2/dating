@@ -28,7 +28,6 @@ class Controller
     {
         global $validator;
         global $dataLayer;
-        //  global $order;
 
         //If the form has been submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -42,7 +41,6 @@ class Controller
 
             //If first name is valid --> Store in session
             if ($validator->validFirstName($userFirstName)) {
-                //$order->setFood($userFood);
                 $_SESSION['fname'] = $userFirstName;
             } //First name is not valid -> Set an error in F3 hive
             else {
@@ -51,7 +49,6 @@ class Controller
 
             //If last name is valid --> Store in session
             if ($validator->validLastName($userLastName)) {
-                //$order->setFood($userFood);
                 $_SESSION['lname'] = $userLastName;
             } //Last name is not valid -> Set an error in F3 hive
             else {
@@ -70,7 +67,6 @@ class Controller
 
             //If age is valid --> Store in session
             if ($validator->validAge($userAge)) {
-                //$order->setFood($userFood);
                 $_SESSION['age'] = $userAge;
             } //Age is not valid -> Set an error in F3 hive
             else {
@@ -79,7 +75,6 @@ class Controller
 
             //If phone is valid --> Store in session
             if ($validator->validPhone($userPhone)) {
-                //$order->setFood($userFood);
                 $_SESSION['phone'] = $userPhone;
             } //Email is not valid -> Set an error in F3 hive
             else {
@@ -88,7 +83,6 @@ class Controller
 
             //If there are no errors, redirect to /profile
             if (empty($this->_f3->get('errors'))) {
-                // $_SESSION['order'] = $order;
                 $this->_f3->reroute('/profile');
             }
         }
@@ -125,7 +119,6 @@ class Controller
 
             //If email is valid --> Store in session
             if ($validator->validEmail($userEmail)) {
-                //$order->setFood($userFood);
                 $_SESSION['email'] = $userEmail;
             } //Email is not valid -> Set an error in F3 hive
             else {
@@ -164,7 +157,6 @@ class Controller
 
             //If there are no errors, redirect to /profile
             if (empty($this->_f3->get('errors'))) {
-                // $_SESSION['order'] = $order;
                 $this->_f3->reroute('/interests');
             }
         }
