@@ -20,10 +20,12 @@ session_start();
 //Create an instance of the Base class
 $f3 = Base::instance();
 
+//add classes
 $validator = new Validate();
 $dataLayer = new DataLayer();
-//$order = new Order();
 $controller = new Controller($f3);
+$member = new Member();
+$premiumMember = new PremiumMember();
 
 //Create an instance of the Base class
 $f3 = Base::instance();
