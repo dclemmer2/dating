@@ -38,7 +38,11 @@ Page containing a form with personal info for dating website
                 <input type="tel" class="form-control" id="phone" name="phone" value="{{ @userPhone }}"
                        maxlength="12" placeholder="222-333-4444">
                 <check if="{{ isset(@errors['phone']) }}"><span class="text-danger">{{ @errors['phone'] }}</span></check>
-                <br><br>
+                <br>
+                <label class="font-weight-bold">Premium Membership</label><br>
+                <label><input type="checkbox" name="premium" value="{{ @userPremium }}">
+                    Sign me up for a Premium Account!</label>
+                <br>
             </div>
             <div class="form-group col-sm-4">
                 <p id="privacyPol" class="rounded text-center"><strong>Note:</strong> All information
