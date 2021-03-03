@@ -9,36 +9,41 @@ Page containing summary of form submission for dating website
         <div class="form-group col-md-6" id="left">
             <table>
                 <tr>
-                    <td>Name: {{ @SESSION.fname }} {{ @SESSION.lname }}</td>
+                    <td>Name: {{ @SESSION.member->getFname() }} {{ @SESSION.member->getLname() }}</td>
                 </tr>
                 <tr>
-                    <td>Gender: {{ ucfirst(@SESSION.gender) }}</td>
+                    <td>Gender: {{ ucfirst(@SESSION.member->getGender()) }}</td>
                 </tr>
                 <tr>
-                    <td>Age: {{ @SESSION.age }}</td>
+                    <td>Age: {{ @SESSION.member->getAge() }}</td>
                 </tr>
                 <tr>
-                    <td>Phone: {{ @SESSION.phone }}</td>
+                    <td>Phone: {{ @SESSION.member->getPhone() }}</td>
                 </tr>
                 <tr>
-                    <td>Email: {{ @SESSION.email }}</td>
+                    <td>Email: {{ @SESSION.member->getEmail() }}</td>
                 </tr>
                 <tr>
-                    <td>State: {{ ucfirst(@SESSION.state) }}</td>
+                    <td>State: {{ ucfirst(@SESSION.member->getState()) }}</td>
                 </tr>
                 <tr>
-                    <td>Seeking: {{ ucfirst(@SESSION.seeking) }}</td>
+                    <td>Seeking: {{ ucfirst(@SESSION.member->getSeeking()) }}</td>
                 </tr>
-                <tr>
-                    <td>Interests: {{ @SESSION.indoorActs }} {{ @SESSION.outdoorActs }}</td>
-                </tr>
+                <check if="{{ @SESSION.member instanceOf PremiumMember }}">
+                    <tr>
+                        <td>Interests: {{ @SESSION.member->getIndoorInterests() }} {{
+                            @SESSION.member->getOutdoorInterests() }}
+                        </td>
+                    </tr>
+                </check>
+
             </table>
         </div>
         <div class="container-fluid form-group col-md-5">
             <img id="profile" class="rounded" src="images/profile.png" alt="Profile">
             <br>
             <h5 class="text-center">Biography</h5>
-            <p class="text-center">{{ @SESSION.bio }}</p>
+            <p class="text-center">{{ @SESSION.member->getBio() }}</p>
         </div>
     </div>
 
