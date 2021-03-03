@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Class Member creates an object for a member signing up for a dating site
+ * @author Dana Clemmer
+ */
 class Member
 {
     private $_fname;
@@ -30,6 +33,7 @@ class Member
     }
 
     /**
+     * Gets first name
      * @return String
      */
     public function getFname()
@@ -38,6 +42,7 @@ class Member
     }
 
     /**
+     * Sets first name
      * @param String $fname
      */
     public function setFname($fname): void
@@ -46,6 +51,7 @@ class Member
     }
 
     /**
+     * Gets last name
      * @return String
      */
     public function getLname()
@@ -54,6 +60,7 @@ class Member
     }
 
     /**
+     * Sets last name
      * @param String $lname
      */
     public function setLname($lname): void
@@ -62,6 +69,7 @@ class Member
     }
 
     /**
+     * Gets age
      * @return int
      */
     public function getAge()
@@ -70,6 +78,7 @@ class Member
     }
 
     /**
+     * Sets age
      * @param int $age
      */
     public function setAge($age): void
@@ -78,6 +87,7 @@ class Member
     }
 
     /**
+     * Gets gender
      * @return String
      */
     public function getGender()
@@ -86,6 +96,7 @@ class Member
     }
 
     /**
+     * Sets gender
      * @param String $gender
      */
     public function setGender($gender): void
@@ -94,6 +105,7 @@ class Member
     }
 
     /**
+     * Gets phone number
      * @return String
      */
     public function getPhone()
@@ -102,6 +114,7 @@ class Member
     }
 
     /**
+     * Sets phone number
      * @param String $phone
      */
     public function setPhone($phone): void
@@ -110,6 +123,7 @@ class Member
     }
 
     /**
+     * Gets email
      * @return String
      */
     public function getEmail()
@@ -118,6 +132,7 @@ class Member
     }
 
     /**
+     * Sets email
      * @param String $email
      */
     public function setEmail($email): void
@@ -126,6 +141,7 @@ class Member
     }
 
     /**
+     * Gets state
      * @return String
      */
     public function getState()
@@ -134,6 +150,7 @@ class Member
     }
 
     /**
+     * Sets state
      * @param String $state
      */
     public function setState($state): void
@@ -142,6 +159,7 @@ class Member
     }
 
     /**
+     * Gets gender seeking
      * @return String
      */
     public function getSeeking()
@@ -150,6 +168,7 @@ class Member
     }
 
     /**
+     * Sets gender seeking
      * @param String $seeking
      */
     public function setSeeking($seeking): void
@@ -158,6 +177,7 @@ class Member
     }
 
     /**
+     * Gets bio
      * @return String
      */
     public function getBio()
@@ -166,6 +186,7 @@ class Member
     }
 
     /**
+     * Sets bio
      * @param String $bio
      */
     public function setBio($bio): void
