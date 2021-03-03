@@ -28,8 +28,6 @@ class Controller
     {
         global $validator;
         global $dataLayer;
-        global $member;
-        global $premiumMember;
 
         //If the form has been submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -42,12 +40,20 @@ class Controller
             $userPhone = $_POST['phone'];
             $premium = $_POST['premium'];
 
+            //check if premium member to create an object based on that
+            if (isset($premium)) {
+                $member = new PremiumMember($userFirstName, $userLastName,
+                    $userAge, $userGender, $userPhone);
+            }
+            else {
+                $member = new Member($userFirstName, $userLastName,
+                    $userAge, $userGender, $userPhone);
+            }
 
             //If first name is valid --> Store in session
             if ($validator->validFirstName($userFirstName)) {
                 //add first name to member and premium member objects
                 $member->setFname($userFirstName);
-                $premiumMember->setFname($userFirstName);
             } //First name is not valid -> Set an error in F3 hive
             else {
                 $this->_f3->set('errors["fname"]', "*First name cannot be blank and must contain only characters");
@@ -56,8 +62,6 @@ class Controller
             //If last name is valid --> Store in session
             if ($validator->validLastName($userLastName)) {
                 $member->setLname($userLastName);
-                $premiumMember->setLname($userLastName);
-
             } //Last name is not valid -> Set an error in F3 hive
             else {
                 $this->_f3->set('errors["lname"]', "*Last name cannot be blank and must contain only characters");
@@ -67,7 +71,6 @@ class Controller
             if (isset($userGender)) {
                 if ($validator->validGender($userGender)) {
                     $member->setGender($userGender);
-                    $premiumMember->setGender($userGender);
                 } //Data is not valid -> We've been spoofed!
                 else {
                     $this->_f3->set('errors["gender"]', "*Go away, evildoer!");
@@ -77,7 +80,6 @@ class Controller
             //If age is valid --> Store in session
             if ($validator->validAge($userAge)) {
                 $member->setAge($userAge);
-                $premiumMember->setAge($userAge);
             } //Age is not valid -> Set an error in F3 hive
             else {
                 $this->_f3->set('errors["age"]', "*Age cannot be blank and must be a valid age between 18 and 118");
@@ -86,7 +88,6 @@ class Controller
             //If phone is valid --> Store in session
             if ($validator->validPhone($userPhone)) {
                 $member->setPhone($userPhone);
-                $premiumMember->setPhone($userPhone);
             } //Email is not valid -> Set an error in F3 hive
             else {
                 $this->_f3->set('errors["phone"]', "*Phone cannot be blank and must be a valid number");
@@ -95,12 +96,7 @@ class Controller
             //If there are no errors, redirect to /profile
             if (empty($this->_f3->get('errors'))) {
                 $_SESSION['member'] = $member;
-                $_SESSION['premiumMember'] = $premiumMember;
                 $this->_f3->reroute('/profile');
-            }
-            //if premium checkbox is checked change isPremium variable to true
-            if (isset($premium)) {
-                $_SESSION['premiumgit '] = true;
             }
         }
 
@@ -138,7 +134,6 @@ class Controller
             //If email is valid --> Store in session
             if ($validator->validEmail($userEmail)) {
                 $_SESSION['member']->setEmail($userEmail);
-                $_SESSION['premiumMember']->setEmail($userEmail);
             } //Email is not valid -> Set an error in F3 hive
             else {
                 $this->_f3->set('errors["email"]', "*Email cannot be blank and must be a valid email");
@@ -148,10 +143,8 @@ class Controller
             if (isset($userState)) {
                 if ($validator->validState($userState)) {
                     $_SESSION['member']->setState($userState);
-                    $_SESSION['premiumMember']->setState($userState);
                 } else if ($userState == "Choose...") {
                     $_SESSION['member']->setState("");
-                    $_SESSION['premiumMember']->setState("");
                 } //Data is not valid -> We've been spoofed!
                 else {
                     $this->_f3->set('errors["state"]', "*Go away, evildoer!");
@@ -162,7 +155,6 @@ class Controller
             if (isset($genderSeeking)) {
                 if ($validator->validGender($genderSeeking)) {
                     $_SESSION['member']->setSeeking($genderSeeking);
-                    $_SESSION['premiumMember']->setSeeking($genderSeeking);
                 } //Data is not valid -> We've been spoofed!
                 else {
                     $this->_f3->set('errors["seeking"]', "*Go away, evildoer!");
@@ -172,11 +164,10 @@ class Controller
             //If bio is input, store in session
             if (isset($userBio)) {
                 $_SESSION['member']->setBio($userBio);
-                $_SESSION['premiumMember']->setBio($userBio);
             }
 
             //if premium checkbox is checked and there are no errors, redirect to /interests
-            if ($_SESSION['premium'] == true && empty($this->_f3->get('errors'))) {
+            if ($_SESSION['member'] instanceOf PremiumMember && empty($this->_f3->get('errors'))) {
                 $this->_f3->reroute('/interests');
             }//if premium checkbox is not checked and there are no errors, redirect to /summary
             else {
@@ -217,8 +208,8 @@ class Controller
             if (isset($indoorActivities)) {
                 //Data is valid -> Add to session
                 if ($validator->validIndoor($indoorActivities)) {
-                    $_SESSION['premiumMember']->setIndoorInterests($indoorActivities);
-                    //$_SESSION['indoorActs'] = implode(", ", $indoorActivities) . ",";
+                    $indoorActivities = implode(", ", $indoorActivities);
+                    $_SESSION['member']->setIndoorInterests($indoorActivities);
                 } //Data is not valid -> We've been spoofed!
                 else {
                     $this->_f3->set('errors["indoor"]', "*Go away, evildoer!");
@@ -236,8 +227,8 @@ class Controller
             if (isset($outdoorActivities)) {
                 //Data is valid -> Add to session
                 if ($validator->validOutdoor($outdoorActivities)) {
-                    //$_SESSION['outdoorActs'] = implode(", ", $outdoorActivities);
-                    $_SESSION['premiumMember']->setOutdoorInterests($outdoorActivities);
+                    $outdoorActivities = ", " . implode(", ", $outdoorActivities);
+                    $_SESSION['member']->setOutdoorInterests($outdoorActivities);
                 } //Data is not valid -> We've been spoofed!
                 else {
                     $this->_f3->set('errors["outdoor"]', "*Go away, evildoer!");
@@ -254,7 +245,6 @@ class Controller
 
             //If there are no errors, redirect user to interests page
             if (empty($this->_f3->get('errors'))) {
-                //$_SESSION['premiumMember'] = $premiumMember;
                 $this->_f3->reroute('/summary');
             }
         }
@@ -270,7 +260,7 @@ class Controller
     /** Display summary page */
     function summary()
     {
-        var_dump($_SESSION);
+        //var_dump($_SESSION);
 
         //Display a view
         $view = new Template();

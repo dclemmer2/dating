@@ -24,8 +24,6 @@ $f3 = Base::instance();
 $validator = new Validate();
 $dataLayer = new DataLayer();
 $controller = new Controller($f3);
-$member = new Member();
-$premiumMember = new PremiumMember();
 
 //Create an instance of the Base class
 $f3 = Base::instance();
