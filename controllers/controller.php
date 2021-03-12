@@ -42,12 +42,9 @@ class Controller
 
             //check if premium member to create an object based on that
             if (isset($premium)) {
-                $member = new PremiumMember($userFirstName, $userLastName,
-                    $userAge, $userGender, $userPhone);
-            }
-            else {
-                $member = new Member($userFirstName, $userLastName,
-                    $userAge, $userGender, $userPhone);
+                $member = new PremiumMember();
+            } else {
+                $member = new Member();
             }
 
             //If first name is valid --> Store in session
@@ -140,15 +137,13 @@ class Controller
             }
 
             //If state is input, store in session
-            if (isset($userState)) {
-                if ($validator->validState($userState)) {
-                    $_SESSION['member']->setState($userState);
-                } else if ($userState == "Choose...") {
-                    $_SESSION['member']->setState("");
-                } //Data is not valid -> We've been spoofed!
-                else {
-                    $this->_f3->set('errors["state"]', "*Go away, evildoer!");
-                }
+            if ($validator->validState($userState)) {
+                $_SESSION['member']->setState($userState);
+            } else if ($userState == "Choose...") {
+                $_SESSION['member']->setState("");
+            } //Data is not valid -> We've been spoofed!
+            else {
+                $this->_f3->set('errors["state"]', "*Go away, evildoer!");
             }
 
             //If gender seeking is input, store in session
@@ -167,11 +162,11 @@ class Controller
             }
 
             //if premium checkbox is checked and there are no errors, redirect to /interests
-            if ($_SESSION['member'] instanceOf PremiumMember && empty($this->_f3->get('errors'))) {
-                $this->_f3->reroute('/interests');
-            }//if premium checkbox is not checked and there are no errors, redirect to /summary
-            else {
-                if (empty($this->_f3->get('errors'))) {
+            if (empty($this->_f3->get('errors'))) {
+                if ($_SESSION['member'] instanceof PremiumMember) {
+                    $this->_f3->reroute('/interests');
+                }//if premium checkbox is not checked and there are no errors, redirect to /summary
+                else {
                     $this->_f3->reroute('/summary');
                 }
             }
@@ -260,11 +255,30 @@ class Controller
     /** Display summary page */
     function summary()
     {
+        global $database;
+        $database->insertMember($_SESSION['member']);
+
         //var_dump($_SESSION);
 
         //Display a view
         $view = new Template();
         echo $view->render('views/summary.html');
+
+        //Clear the SESSION array
+        session_destroy();
+    }
+
+    /** Display admin page */
+    function admin()
+    {
+        global $database;
+        $this->_f3->set('results', $database->getMembers());
+
+        //var_dump($_SESSION);
+
+        //Display a view
+        $view = new Template();
+        echo $view->render('views/admin.html');
 
         //Clear the SESSION array
         session_destroy();

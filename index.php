@@ -13,6 +13,8 @@ error_reporting(E_ALL);
 
 //Require the autoload file
 require_once('vendor/autoload.php');
+//Connect to database using PDO
+require $_SERVER['DOCUMENT_ROOT'] . '/../config.php';
 
 //Start a session
 session_start();
@@ -21,9 +23,10 @@ session_start();
 $f3 = Base::instance();
 
 //add classes
-$validator = new Validate();
-$dataLayer = new DataLayer();
+$dataLayer = new DataLayer($dbh);
+$validator = new Validate($dataLayer);
 $controller = new Controller($f3);
+$database = new Database($dbh);
 
 //Create an instance of the Base class
 $f3 = Base::instance();
@@ -57,6 +60,12 @@ $f3->route('GET|POST /interests', function () {
 $f3->route('GET /summary', function () {
     global $controller;
     $controller->summary();
+});
+
+//Define a admin route
+$f3->route('GET /admin', function () {
+    global $controller;
+    $controller->admin();
 });
 
 //Run fat free
