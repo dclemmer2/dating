@@ -1,0 +1,65 @@
+<include href="views/header.html"></include>
+<body>
+<h1>Member Table</h1>
+
+<div class="table">
+    <table id="guestbook-table" class="display">
+        <thead>
+        <tr>
+            <td>Member_id</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Age</td>
+            <td>Gender</td>
+            <td>Phone</td>
+            <td>Email</td>
+            <td>State</td>
+            <td>Seeking</td>
+            <td>Premium</td>
+            <td>Interests</td>
+        </tr>
+        </thead>
+
+        <tbody>
+        <repeat group="{{ @results }}" value="{{ @result }}">
+            <tr>
+                <th>{{ @result.member_id }}</th>
+                <td>{{ @result.fname }}</td>
+                <td>{{ @result.lname }}</td>
+                <td>{{ @result.age }}</td>
+                <td>{{ @result.gender }}</td>
+                <td>{{ @result.phone }}</td>
+                <td>{{ @result.email }}</td>
+                <td>{{ @result.state }}</td>
+                <td>{{ @result.seeking }}</td>
+                <td><input type="checkbox"
+                    <check if="{{ @result.premium }}">checked</check>
+                    >
+                </td>
+                <td>{{ @result.interests }}</td>
+            </tr>
+        </repeat>
+        </tbody>
+    </table>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+<script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script>
+    $('#guestbook-table').DataTable({
+        'scrollX': true,
+        "order": [[2, "asc"]]
+    });
+</script>
+</body>
+</html>
+
