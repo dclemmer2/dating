@@ -1,5 +1,9 @@
 <?php
 
+/* model/database.php
+ * Contains database queries for Dating app
+ *
+ */
 /**
  * SQL Statements:
  *
@@ -23,10 +27,7 @@
  *
  */
 
-/**
- *
- * Class Database
- */
+
 class Database
 {
     private $_dbh;
@@ -36,6 +37,10 @@ class Database
         $this->_dbh = $dbh;
     }
 
+    /**
+     * insert query to insert member into database
+     * @param $member member object passed in
+     */
     function insertMember($member)
     {
         /* INSERT QUERY */
@@ -71,6 +76,9 @@ class Database
 
     }
 
+    /**
+     * query that returns rows from table
+     */
     function getMembers()
     {
         /* SELECT QUERY WITH FETCHALL (gets multiple rows) */
@@ -90,13 +98,62 @@ class Database
         return $result;
     }
 
+    /**
+     * gets member associated with passed in id
+     *
+     * @param $member_id passed in id of member
+     */
     function getMember($member_id)
     {
+        /* SELECT QUERY WITH FETCH (gets one row) */
+
+        //Define the query
+        $sql = "SELECT * FROM member WHERE member_id = :member_id";
+
+        //Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        //Bind the parameters
+        $id = $member_id;
+        $statement->bindParam(':member_id', $id, PDO::PARAM_INT);
+
+        //Execute the statement
+        $statement->execute();
+
+        //Process the result
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        echo $row['fname'] . ", " . $row['lname'] . ", " . $row['age'] . ", " .
+            $row['gender'] . ", " . $row['phone'] . ", " . $row['email'] . ", " .
+            $row['state'] . ", " . $row['seeking'] . ", " . $row['bio'] . ", " .
+            $row['premium'] . ", " . $row['interests'];
 
     }
 
+    /**
+     * gets interests of member associated with passed in id
+     *
+     * @param $member_id passed in id of member
+     */
     function getInterests($member_id)
     {
+        /* SELECT QUERY WITH FETCH (gets one row) */
+
+        //Define the query
+        $sql = "SELECT * FROM member WHERE member_id = :member_id";
+
+        //Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        //Bind the parameters
+        $id = $member_id;
+        $statement->bindParam(':member_id', $id, PDO::PARAM_INT);
+
+        //Execute the statement
+        $statement->execute();
+
+        //Process the result
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        echo $row['interests'];
 
     }
 
