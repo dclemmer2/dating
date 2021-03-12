@@ -1,6 +1,14 @@
+<!--
+Dana Clemmer
+views/admin.html
+Admin file for dating website
+-->
+
 <include href="views/header.html"></include>
-<body>
-<h1>Member Table</h1>
+<body id="adminBody" class="mx-auto">
+<br>
+<h1 class="font-weight-boldgit">Member Table</h1>
+<br>
 
 <div class="table">
     <table id="guestbook-table" class="display">
@@ -15,6 +23,7 @@
             <td>Email</td>
             <td>State</td>
             <td>Seeking</td>
+            <td>Bio</td>
             <td>Premium</td>
             <td>Interests</td>
         </tr>
@@ -32,6 +41,7 @@
                 <td>{{ @result.email }}</td>
                 <td>{{ @result.state }}</td>
                 <td>{{ @result.seeking }}</td>
+                <td>{{ @result.bio }}</td>
                 <td><input type="checkbox"
                     <check if="{{ @result.premium }}">checked</check>
                     >

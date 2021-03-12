@@ -3,6 +3,22 @@
  * Stylesheet for dating website
  */
 
+#admin {
+    text-decoration: none;
+    color: white;
+    text-shadow: 2px 1px black;
+}
+
+#admin:hover {
+    text-decoration: none;
+    color: #eac9c9;
+}
+
+body#adminBody {
+    width:80%;
+}
+
+
 input.submit {
     display: block;
     margin-left: auto;
@@ -38,12 +54,13 @@ input.rounded {
 }
 
 .bioDiv {
-    width: 97%;
+    width: 100%;
 }
 
 @media(min-width: 767px) {
     .bioDiv {
         float: right;
+        width: 97%;
     }
 }
 

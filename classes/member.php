@@ -23,14 +23,14 @@ class Member
      * @param $_gender
      * @param $_phone
      */
-    public function __construct($_fname, $_lname, $_age, $_gender, $_phone)
+   /* public function __construct($_fname, $_lname, $_age, $_gender, $_phone)
     {
         $this->_fname = $_fname;
         $this->_lname = $_lname;
         $this->_age = $_age;
         $this->_gender = $_gender;
         $this->_phone = $_phone;
-    }
+    }*/
 
     /**
      * Gets first name

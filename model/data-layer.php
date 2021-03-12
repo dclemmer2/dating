@@ -7,6 +7,12 @@
 
 class DataLayer
 {
+    private $_dbh;
+    function __construct($dbh)
+    {
+        $this->_dbh = $dbh;
+    }
+
     /** getGender() returns an array of gender options
      *  @return array
      */

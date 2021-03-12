@@ -8,9 +8,9 @@ class Validate
 {
     private $_dataLayer;
 
-    function __construct()
+    function __construct($dataLayer)
     {
-        $this->_dataLayer = new DataLayer();
+        $this->_dataLayer = $dataLayer;
     }
 
     /** validFirstName() returns true if first name is not empty and
